@@ -67,7 +67,7 @@ def tpay(request):
     
 
 def pliki(request,sciezka):
-    return redirect('http://test.mtsz.atthost24.pl/static/www/'+sciezka)
+    return redirect('http://test.mtsz.org.pl/static/www/'+sciezka)
 
 
 def brakStrony(request,sciezka):

@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'tpay$', views.tpay , name='tpay'),
     url(r'mtsz/(.+)$', views.pliki , name='pliki'),
     url(r'(.+)$', views.brakStrony , name='brakStrony'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] 
 
 
 

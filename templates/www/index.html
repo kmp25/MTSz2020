@@ -69,34 +69,22 @@
     <div class="main">
 
 
-{% if NaszeStarty %}
-<article>
-<div class="title">NASZE STARTY 2020<span class="data">(1.02.2019)</span></div>
-<center><table><tr><td>Lp.</td><td>Nazwa turnieju</td><td>Wyniki</td></tr>
-{% for ns in NaszeStarty %}
-	<tr><td>{{ forloop.counter }}.<td><a href="{{ ns.link }}" target="_new">{{ ns.nazwa }}</a><BR/> {{ ns.miejscowosc }}, {{ ns.dataOd|date:"d.m.Y" }}-{{ ns.dataDo|date:"d.m.Y" }}<BR/>
-	{% if ns.zawodnikow %}Startowało {{ ns.zawodnikow }} zawodnikow. {% endif %}{% if ns.druzyn %}Startowało {{ ns.druzyn }} druzyn. {% endif %}
-	</td><td>{{ ns.miejsca|linebreaksbr  }}</tr>
-{% endfor %}
-</table></center></article>
-{% endif %} 
-
 {% for art in Pelny %}
         <article>
-            <div class="title" onclick="location.href='../a/{{ art.id }}'">{{ art.tytul }} <span class="data">({{ art.utworzony|date:"Y-m-d" }})</span></div>
-                <p>{{ art.wstep }}</p><p> {{ art.tresc |safe }}</p>
+            <div class="title" onclick="location.href='../a/{{ art.id }}'">{{ art.getTytul }} <span class="data">({{ art.utworzony|date:"Y-m-d" }})</span></div>
+                <p>{{ art.getWstep }}</p><p> {{ art.getTresc |safe }}</p>
         </article>
 {% endfor %}
 
 {% for art in Skrocony %}
         <article>
-            <div class="title" onclick="location.href='../a/{{ art.id }}'">{{ art.tytul }}<span class="data">({{ art.utworzony|date:"Y-m-d" }})</span></div>
-                <p>{{ art.wstep }}</p><p align="center"> <span type="button" onclick="location.href='../a/{{ art.id }}'">...Więcej...</span></p>
+            <div class="title" onclick="location.href='../a/{{ art.id }}'">{{ art.getTytul }}<span class="data">({{ art.utworzony|date:"Y-m-d" }})</span></div>
+                <p>{{ art.getWstep }}</p><p align="center"> <span type="button" onclick="location.href='../a/{{ art.id }}'">...Więcej...</span></p>
         </article>
 {% endfor %}
 
 {% for art in Link %}
-        <a class="TylkoLink" href="../a/{{ art.id }}">{{ art.tytul }}<span class="data">({{ art.utworzony|date:"Y-m-d" }})</span></a>
+        <a class="TylkoLink" href="../a/{{ art.id }}">{{ art.getTytul }}<span class="data">({{ art.utworzony|date:"Y-m-d" }})</span></a>
 {% endfor %}
       
     </div>

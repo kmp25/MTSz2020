@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Artykul,Menu,ArtykulMenu,Uzytkownik, Tpay, NaszeStarty
+from .models import Artykul,Menu,ArtykulMenu,Uzytkownik, Tpay, NaszeStarty, Terminarz
 
 class ArtykulAdmin(admin.ModelAdmin):
     #list_display = ('id_tech','id_grpodm','data','wartosc','wartoscpocz','aktywny','usuniety')
@@ -37,3 +37,9 @@ admin.site.register(Tpay,TpayAdmin)
 class NaszeStartyAdmin(admin.ModelAdmin):
     ordering = ['-dataOd']
 admin.site.register(NaszeStarty,NaszeStartyAdmin)
+
+class TerminarzAdmin(admin.ModelAdmin):
+    ordering = ['-dataOd']
+admin.site.register(Terminarz,TerminarzAdmin)
+
+
