@@ -1,0 +1,9 @@
+SKŁADKA ROCZNA <BR/>
+{{ SkladkaRoczna.osobaId.imie }} {{ SkladkaRoczna.osobaId.imie }} {{ SkladkaRoczna.rokId.rok}} 
+    <form method="POST" >{% csrf_token %}
+    {{ forma }}
+    <button type="submit" >Zapłać</button>
+    </form>
+
+    <input type="button" value="Anuluj" onclick="window.history.back();">
+

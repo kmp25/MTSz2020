@@ -1,7 +1,8 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Artykul,Menu,ArtykulMenu,Uzytkownik, Tpay, NaszeStarty, Terminarz
+from .models import Artykul,Menu,ArtykulMenu,Uzytkownik, Tpay, NaszeStarty, Terminarz, Osoba, Zawodnik, Czlonek, Rok, SkladkaRoczna, SkladkaRocznaWyslaneTpay
+from .models import SkladkaRocznaOplata
 
 class ArtykulAdmin(admin.ModelAdmin):
     #list_display = ('id_tech','id_grpodm','data','wartosc','wartoscpocz','aktywny','usuniety')
@@ -41,5 +42,33 @@ admin.site.register(NaszeStarty,NaszeStartyAdmin)
 class TerminarzAdmin(admin.ModelAdmin):
     ordering = ['-dataOd']
 admin.site.register(Terminarz,TerminarzAdmin)
+
+class OsobaAdmin(admin.ModelAdmin):
+    ordering = ['nazwisko']
+admin.site.register(Osoba,OsobaAdmin)
+
+class ZawodnikAdmin(admin.ModelAdmin):
+    ordering = ['-id']
+admin.site.register(Zawodnik,ZawodnikAdmin)
+
+class CzlonekAdmin(admin.ModelAdmin):
+    ordering = ['-id']
+admin.site.register(Czlonek,CzlonekAdmin)
+
+class RokAdmin(admin.ModelAdmin):
+    ordering = ['-rok']
+admin.site.register(Rok,RokAdmin)
+
+class SkladkaRocznaAdmin(admin.ModelAdmin):
+    ordering = ['-id']
+admin.site.register(SkladkaRoczna,SkladkaRocznaAdmin)
+
+class SkladkaRocznaWyslaneTpayAdmin(admin.ModelAdmin):
+    ordering = ['-id']
+admin.site.register(SkladkaRocznaWyslaneTpay,SkladkaRocznaWyslaneTpayAdmin)
+
+class SkladkaRocznaOplataAdmin(admin.ModelAdmin):
+    ordering = ['-id']
+admin.site.register(SkladkaRocznaOplata,SkladkaRocznaOplataAdmin)
 
 
