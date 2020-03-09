@@ -68,11 +68,12 @@ class Artykul(models.Model):
             wynik += "</table></center>"
         elif self.typ == 'Składki':
             wynik = "<center><table><tr><td>Lp.</td><td>Imię, nazwisko</td><td>Kwota zapłacona</td><td>&nbsp;</td></tr>"
-            skladki= SkladkaRoczna.objects.filter(rokId__rok=self.rok)
+            #skladki= SkladkaRoczna.objects.filter(rokId__rok=self.rok)
+            skladki= SkladkaRoczna.objects.all()
             licznik=0
             for sk in skladki:
                 licznik +=1
-                wynik += '<tr><td>{licznik}</td><td>{imieNazwisko}</td><td>{kwotaZaplacona}</td><td>{button}</td></tr>'.format(licznik=licznik,imieNazwisko=sk.osobaId.imie +" "+sk.osobaId.nazwisko,kwotaZaplacona=sk.zaplacona,button='<a href="/zaplacSkladke01">Zapłać</a>')
+                wynik += '<tr><td>{licznik}</td><td>{imieNazwisko}</td><td>{kwotaZaplacona}</td><td>{button}</td></tr>'.format(licznik=licznik,imieNazwisko=sk.osobaId.imie +" "+sk.osobaId.nazwisko,kwotaZaplacona=sk.zaplacona,button='<a href="/zaplacSkladke01?sk={}">Zapłać</a>'.format(sk.id))
             wynik += "</table></center>"
         return wynik
         

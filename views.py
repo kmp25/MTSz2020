@@ -57,10 +57,12 @@ def zaplacSkladke01(request):
             skladkaRocznaWyslaneTpay.kwota = forma.cleaned_data['kwota']
             skladkaRocznaWyslaneTpay.email = forma.cleaned_data['email']
             skladkaRocznaWyslaneTpay.save()
-            adres = 'http://'+HttpRequest.get_host(request)+'/m/105'
+            adres = 'http://'+HttpRequest.get_host(request)+'/a/1553'
             return tpayViews.tpay01(request,'SKLADKA',skladkaRocznaWyslaneTpay.id,skladkaRocznaWyslaneTpay.kwota,'Składka roczna ({}) - {} {}'.format(skladkaRocznaWyslaneTpay.idSkladkaRoczna.rokId.rok,skladkaRocznaWyslaneTpay.idSkladkaRoczna.osobaId.imie,skladkaRocznaWyslaneTpay.idSkladkaRoczna.osobaId.nazwisko),skladkaRocznaWyslaneTpay.email,adres,adres)
     else:
-        skladkaRoczna = SkladkaRoczna.objects.all()[0]
+        sk = request.GET['sk']
+        #skladkaRoczna = SkladkaRoczna.objects.all()[0]
+        skladkaRoczna = SkladkaRoczna.objects.get(id=sk)
         forma = skladka01(initial={'idSkladkaRoczna' :  skladkaRoczna.id} )
         return render(request,
                     'www/zaplacSkladke.html',
