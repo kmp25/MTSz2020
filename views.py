@@ -56,9 +56,10 @@ def zaplacSkladke01(request):
             skladkaRocznaWyslaneTpay.idSkladkaRoczna = SkladkaRoczna.objects.get(id=forma.cleaned_data['idSkladkaRoczna'])
             skladkaRocznaWyslaneTpay.kwota = forma.cleaned_data['kwota']
             skladkaRocznaWyslaneTpay.email = forma.cleaned_data['email']
+            skladkaRocznaWyslaneTpay.nazwisko = forma.cleaned_data['nazwisko']
             skladkaRocznaWyslaneTpay.save()
             adres = 'http://'+HttpRequest.get_host(request)+'/a/1553'
-            return tpayViews.tpay01(request,'SKLADKA',skladkaRocznaWyslaneTpay.id,skladkaRocznaWyslaneTpay.kwota,'Składka roczna ({}) - {} {}'.format(skladkaRocznaWyslaneTpay.idSkladkaRoczna.rokId.rok,skladkaRocznaWyslaneTpay.idSkladkaRoczna.osobaId.imie,skladkaRocznaWyslaneTpay.idSkladkaRoczna.osobaId.nazwisko),skladkaRocznaWyslaneTpay.email,adres,adres)
+            return tpayViews.tpay01(request,'SKLADKA',skladkaRocznaWyslaneTpay.id,skladkaRocznaWyslaneTpay.kwota,'Składka roczna ({}) - {} {}'.format(skladkaRocznaWyslaneTpay.idSkladkaRoczna.rokId.rok,skladkaRocznaWyslaneTpay.idSkladkaRoczna.osobaId.imie,skladkaRocznaWyslaneTpay.idSkladkaRoczna.osobaId.nazwisko),skladkaRocznaWyslaneTpay.email,skladkaRocznaWyslaneTpay.nazwisko,adres,adres)
     else:
         sk = request.GET['sk']
         #skladkaRoczna = SkladkaRoczna.objects.all()[0]
@@ -79,23 +80,6 @@ def zaplacSkladke02(id_SkladkaRocznaWyslaneTpay,kwota,kanal,idKanal):
     skladkaRoczna = skladkaRocznaOplata.idSkladkaRoczna
     skladkaRoczna.zaplacona += kwota
     skladkaRoczna.save()
-
-
-def tpayOLD(request):
-    if request.method == 'GET':
-        qd = request.GET
-    elif request.method == 'POST':
-        qd = request.POST
-    #return HttpResponse(escape(repr(qd)))
-    req1 = Tpay(req = str(dict(qd)))
-    req1.save()
-    
-    return HttpResponse(str(dict(qd)))
-#def pokazMenu(request,pid):
-#    return render(request,
-#                  'www/index.html',
-#                  {'Menu1': Menu.objects.filter(rodzic__isnull=True).order_by('kolejnosc'),'Menu2': Menu.objects.filter(rodzic__isnull=False).order_by('kolejnosc')})
-    
 
 def pliki(request,sciezka):
     return redirect('http://test.mtsz.org.pl/static/www/'+sciezka)

@@ -1,0 +1,540 @@
+/* reset browser styles */
+* {
+	box-sizing: border-box;
+}
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,
+	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
+	em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+	b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
+	details, embed, figure, figcaption, footer, header, hgroup, menu, nav,
+	output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup,
+	menu, nav, section {
+	display: block;
+}
+
+body {
+	line-height: 1.2;
+	color: navy;
+}
+
+/* end reset browser styles */
+html {
+	/*font-family: 'Montserrat', sans-serif;*/
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* Header
+    ââââââââââââââââââââââââââââââââââââââââââââââââââ */
+.button {
+	display: inline-block;
+	height: 80px;
+	padding: 0 20px;
+	color: black;
+	text-align: center;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 80px;
+	letter-spacing: .1rem;
+	text-transform: uppercase;
+	text-decoration: none;
+	white-space: nowrap;
+	background-color: transparent;
+	border-radius: 0px;
+	cursor: pointer;
+	box-sizing: border-box;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+
+.button:hover {
+	color: #FFF;
+	background-color: #000;
+}
+
+.button:hover .dropdown-content {
+	display: block;
+}
+
+.container {
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-flex: 6 1 600px;
+	flex: 6 1 600px;
+}
+
+.content {
+	display: block;
+	height: 40px;
+	padding: 0 20px;
+	color: white;
+	text-align: center;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 40px;
+	letter-spacing: .1rem;
+	text-transform: uppercase;
+	text-decoration: none;
+	white-space: nowrap;
+	background-color: transparent;
+	border-radius: 0px;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+
+.content:hover {
+	color: #00aeef;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: black;
+	z-index: 1;
+	width: inherit;
+	margin-left: -20px;
+	margin-top: -1px;
+}
+
+.fixed {
+	background-color: white;
+	position: fixed;
+	width: 100%;
+}
+
+.header {
+	background-color: white;
+	box-shadow: rgba(0, 0, 0, .2) 0px 4px 10px;
+}
+
+.header, .logo, .container, .info {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+}
+
+.menu {
+	display: none;
+}
+
+.logo {
+	-webkit-flex: 1 1 100px;
+	flex: 1 1 100px;
+	font-size: 32px;
+}
+
+.search {
+	-webkit-flex: 1 1 100px;
+	flex: 1 1 100px;
+}
+
+/* Sidebar1
+    ââââââââââââââââââââââââââââââââââââââââââââââââââ */
+.sidebar1 .button {
+	-webkit-flex: 1 1 100px;
+	flex: 1 1 100px;
+	padding: 10px 10px 0 10px;
+	background-color: rgba(0, 0, 0, .1);
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: column;
+	flex-flow: column;
+}
+
+/* Main
+    ââââââââââââââââââââââââââââââââââââââââââââââââââ */
+article {
+	margin-bottom: 30px;
+	border-style: solid;
+	border-color: white;
+	border-width: 1px;
+	border-bottom-color: lightgray;
+	padding-bottom: 30px;
+}
+
+article a:hover, .main a:hover {
+	color: #5f676a;
+}
+
+article .title {
+	margin-bottom: 30px;
+	cursor: pointer;
+}
+
+details {
+	margin-bottom: 70px;
+	cursor: pointer;
+}
+
+.main {
+	-webkit-flex: 4 1 400px;
+	flex: 4 1 400px;
+	padding: 50px 20% 0 20%;
+	background-color: rgba(0, 0, 0, .1);
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: column;
+	flex-flow: column;
+	background-color: white;
+	font-weight: 200;
+	font-size: 16px;
+}
+
+.bg {
+	/*
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-flow: column;
+        flex-flow: column;
+*/
+	/*        background-image: url("http://pliki.pzszach.pl/images/mat/mat_logo.jpg");*/
+	/*background-image: url("http://www.mtsz.org.pl/mtsz/fotki/Naglowek.jpg");*/
+	background-position: bottom;
+	background-repeat: no-repeat;
+	/*height: 10%;*/
+	height: 100px;
+	/*background-attachment: fixed;*/
+	/*background-size: cover;*/
+}
+
+.main a {
+	text-decoration: none;
+	font-weight: 300;
+	color: black;
+}
+
+strong {
+	font-weight: 200;
+	color: #00aeef;
+}
+
+.title, summary {
+	text-transform: uppercase;
+	color: black;
+	font-size: 16px;
+	font-weight: 600;
+	letter-spacing: .1rem;
+	text-transform: uppercase;
+	text-decoration: none;
+	white-space: wrap;
+	text-align: left;
+}
+
+summary::-webkit-details-marker {
+	
+}
+
+summary {
+	text-align: left;
+	outline: none;
+}
+
+summary .begin {
+	margin-top: 30px;
+	font-size: 16px;
+	text-transform: none;
+	font-weight: 200;
+	letter-spacing: normal;
+	text-align: left;
+}
+
+details {
+	/*        background-color: #f6f7f8;*/
+	margin-bottom: 70px;
+	border-style: solid;
+	border-color: white;
+	border-width: 1px;
+	border-bottom-color: lightgray;
+	padding-bottom: 50px;
+}
+
+/* Footer
+    ââââââââââââââââââââââââââââââââââââââââââââââââââ */
+.footer {
+	/*
+        -webkit-flex: 1 1 100px;
+        flex: 1 1 100px;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+    */
+	background-color: black;
+	padding: 20px 0 20px 0;
+	margin-top: 70px;
+	padding-left: 30px;
+}
+
+.footer {
+	color: white;
+	font-size: 16px;
+	text-align: left;
+}
+
+.footer a {
+	color: white;
+	font-weight: 100;
+}
+
+.footer .title {
+	color: white;
+	font-weight: 400;
+}
+
+.data {
+	/*font-size: 10px;*/
+	font-weight: 50;
+	color: lightgrey;
+}
+
+.TylkoLink {
+	padding-top: 5px;
+	border-bottom: 1px dotted lightgrey;
+}
+
+table, tr, th, td {
+	border: 1px solid lightgrey;
+	vertical-align: middle;
+	padding: 3px;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+@media ( min-width : 1200px) {
+	/*Header
+    ââââââââââââââââââââââââââââââââââââââââââââââââââ */
+	.button {
+		font-size: 14px;
+		padding: 0 10px;
+	}
+	.content {
+		font-size: 14px;
+		padding: 0 10px;
+	}
+	.dropdown-content {
+		margin-left: -10px;
+	}
+}
+
+@media ( min-width : 668px) and (max-width: 950px) {
+	/* Header
+    ââââââââââââââââââââââââââââââââââââââââââââââââââ */
+	.button {
+		font-size: 12px;
+		padding: 0 10px;
+	}
+	.content {
+		font-size: 12px;
+		padding: 0 10px;
+	}
+	.dropdown-content {
+		margin-left: -10px;
+	}
+}
+
+@media ( min-device-width : 668px) and (max-device-width: 950px) {
+	/* Header
+    ââââââââââââââââââââââââââââââââââââââââââââââââââ */
+	.button {
+		font-size: 12px;
+		padding: 0 10px;
+	}
+	.content {
+		font-size: 12px;
+		padding: 0 10px;
+	}
+	.dropdown-content {
+		margin-left: -10px;
+	}
+}
+
+@media ( min-width : 375px) and (max-width: 667px) {
+	/* Header
+    ââââââââââââââââââââââââââââââââââââââââââââââââââ */
+	.button {
+		display: block;
+		height: 40px;
+		font-size: 14px;
+		font-weight: 600;
+		line-height: 40px;
+	}
+	.content, .logo, .search {
+		display: none;
+	}
+	.fixed {
+		position: relative;
+	}
+	.dropdown-content {
+		margin-left: -10px;
+	}
+	.nav {
+		background-image:
+			url("http://www.mtsz.org.pl/mtsz/Logos/Logo_MTSz_Maly.jpg"); */
+		background-position: left;
+		background-repeat: no-repeat;
+		width: 100%;
+	}
+}
+
+@media ( min-device-width : 375px) and (max-device-width: 667px) {
+	/* Header
+    ââââââââââââââââââââââââââââââââââââââââââââââââââ */
+	.bar1, .bar2, .bar3 {
+		width: 35px;
+		height: 5px;
+		background-color: #333;
+		margin: 6px 10px;
+		transition: 0.4s;
+	}
+	.button {
+		display: block;
+		height: 120px;
+		font-size: 46px;
+		font-weight: 600;
+		line-height: 120px;
+	}
+	.button:hover {
+		background-color: rgba(0, 0, 0, 0);
+		color: black;
+	}
+	.button:active {
+		background-color: black;
+		color: white;
+	}
+	.content, .logo, .search {
+		display: none;
+	}
+	.container, .nav {
+		display: none;
+	}
+	.bg {
+		display: none;
+	}
+	.dropdown-content {
+		margin-left: -10px;
+	}
+	.nav {
+		width: 100%;
+	}
+	/* Main
+    ââââââââââââââââââââââââââââââââââââââââââââââââââ */
+	.menu {
+		display: inline-block;
+	}
+	.header {
+		height: 120px;
+	}
+	.overlay {
+		height: 0%;
+		width: 100%;
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		background-color: rgb(0, 0, 0);
+		background-color: rgba(0, 0, 0, 0.9);
+		overflow-y: hidden;
+		transition: 0.5s;
+	}
+	.overlay-content {
+		position: relative;
+		top: 10%;
+		width: 100%;
+		text-align: left;
+		margin-top: 30px;
+		padding-left: 15%;
+	}
+	.overlay a {
+		padding: 20px;
+		text-decoration: none;
+		font-size: 60px;
+		color: white;
+		display: block;
+		transition: 0.3s;
+		font-weight: 200;
+	}
+	.overlay a:hover, .overlay a:focus {
+		color: gray;
+	}
+	.open {
+		cursor: pointer;
+		padding: 40px 0 0 35px;
+		vertical-align: middle;
+	}
+	.close {
+		padding-left: 25px;
+	}
+	.open div {
+		width: 45px;
+		height: 2px;
+		background-color: black;
+		margin: 10px 0;
+	}
+
+	/* --------------------------------------------- */
+	.bar1, .bar2, .bar3 {
+		width: 35px;
+		height: 5px;
+		background-color: #333;
+		margin: 6px 0;
+		transition: 0.4s;
+	}
+
+	/* Rotate first bar */
+	.change .bar1 {
+		-webkit-transform: rotate(-45deg) translate(-9px, 6px);
+		transform: rotate(-45deg) translate(-9px, 6px);
+	}
+
+	/* Rotate last bar */
+	.change .bar2 {
+		-webkit-transform: rotate(45deg) translate(-8px, -8px);
+		transform: rotate(45deg) translate(-8px, -8px);
+	}
+
+	/* Main
+    ââââââââââââââââââââââââââââââââââââââââââââââââââ */
+	.main {
+		padding: 150px 8% 0 8%;
+	}
+	.main, summary .begin {
+		font-size: 30px;
+		color: black;
+	}
+	.title, summary {
+		font-size: 30px;
+	}
+	.title {
+		text-align: left;
+		cursor: pointer;
+	}
+
+	/* Footer    -------------------------------*/
+	.footer {
+		background-color: black;
+		padding: 20px 0 20px 0;
+		margin-top: 70px;
+		padding-left: 30px;
+	}
+	.footer .title {
+		color: white;
+		font-size: 24px;
+		text-align: left;
+		font-weight: 400;
+	}
+	.footer a {
+		color: white;
+		font-size: 24px;
+		font-weight: 100;
+	}
+}
