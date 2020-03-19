@@ -51,15 +51,15 @@ class Artykul(models.Model):
         if self.typ == 'Artykuł':
             wynik = self.tresc
         elif self.typ == 'Starty':
-            wynik = "<center><table><tr><td>Lp.</td><td>Nazwa turnieju</td><td>Wyniki</td></tr>"
+            wynik = "<center><table><tr><th>Lp.</th><th>Data</th><th>Miejsce</th><th class='name'>Nazwa</th><th class='res'>Wyniki</th></tr>"
             starty= NaszeStarty.objects.filter(Q(dataOd__year=self.rok) | Q(dataDo__year=self.rok))
             licznik=0
             for s in starty:
                 licznik +=1
-                wynik += '<tr><td>{licznik}</td><td><a href="{href}" target="_new">{nazwa}</a><BR/>{miejscowosc}, {dataOd}-{dataDo}<BR/>{zaw} {dru}</td><td>{miejsca}</td></tr>'.format(licznik=licznik,href=s.link,nazwa=s.nazwa,miejscowosc=s.miejscowosc,dataOd=s.dataOd.strftime("%d.%m.%Y"),dataDo=s.dataDo.strftime("%d.%m.%Y"),zaw="Startowało {z} zawodników.".format(z=s.zawodnikow) if s.zawodnikow else "",dru="Startowało {dr} drużyn.".format(dr=s.druzyn) if s.druzyn else "",miejsca=s.miejsca)
+                wynik += '<tr><td>{licznik}</td><td>{dataOd}-{dataDo}</td><td>{miejscowosc}</td><td><a href="{href}" target="_new">{nazwa}</a></td><td>{zaw} {dru} <br> {miejsca}</td></tr>'.format(licznik=licznik,href=s.link,nazwa=s.nazwa,miejscowosc=s.miejscowosc,dataOd=s.dataOd.strftime("%d.%m.%Y"),dataDo=s.dataDo.strftime("%d.%m.%Y"), zaw="Startowało {z} zawodników.".format(z=s.zawodnikow) if s.zawodnikow else "",dru="Startowało {dr} drużyn.".format(dr=s.druzyn) if s.druzyn else "",miejsca=s.miejsca)
             wynik += "</table></center>"
         elif self.typ == 'Turnieje':
-            wynik = "<center><table><tr><td>Lp.</td><td>Termin</td><td>Nazwa</td><td>Rund</td><td>Termin</td></tr>"
+            wynik = "<center><table><tr class='columns'><th>Lp.</th><th>Termin</td><th>Nazwa</th><th>Rund</th><th>Termin</th></tr>"
             terminarz= Terminarz.objects.filter(Q(dataOd__year=self.rok) | Q(dataDo__year=self.rok))
             licznik=0
             for t in terminarz:

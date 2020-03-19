@@ -1,12 +1,67 @@
+<!doctype html>
 {% load static %}
-<html lang="pl-PL">
-<head ontouchstart="">
+<html>
+<head>
+<meta charset="UTF-8">
 <title>Mińskie Towarzystwo Szachowe</title>
-<!-- link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"-->
-<link rel="stylesheet"href="{% static 'www/style.css' %}">
-<!-- link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"-->
+<link rel="stylesheet" href="{% static 'www/style.css' %}">
+<link rel="stylesheet" href="https://use.typekit.net/kbm3qwl.css">
 </head>
+
+<body>
+	
+	<div class="navigation center">
+		<ul>
+			{% for m1 in Menu1 %}
+				<li><a href="../m/{{ m1.id }}">{{ m1.nazwa }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+	
+	<div class="container center">
+		{% for art in Skrocony %}
+			<div class="article">
+				<div class="title center" onclick="location.href='../a/{{ art.id }}'">
+					<h2>{{ art.getTytul }}</h2>
+				</div>
+				<div class="text">
+					<p>{{ art.getWstep }}</p>
+				</div>
+				<div class="buttons center">
+					<button onclick="location.href='../a/{{ art.id }}'">Więcej</button>
+				</div>
+			</div>
+		{% endfor %}
+		
+		{% for art in Pelny %}
+			<div class="article">
+				<div class="title center" onclick="location.href='../a/{{ art.id }}'">
+					<h2>{{ art.getTytul }}</h2>
+				</div>
+				<div class="text">
+					<p>{{ art.getWstep }}</p>
+					<p>{{ art.getTresc|safe }}</p>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+	
+<!--
+{% for art in Skrocony %}
+        <article>
+            <div class="title" onclick="location.href='../a/{{ art.id }}'">{{ art.getTytul }}<span class="data">({{ art.utworzony|date:"Y-m-d" }})</span></div>
+                <p>{{ art.getWstep }}</p><p align="center"> <span type="button" onclick="location.href='../a/{{ art.id }}'">...Więcej...</span></p>
+        </article>
+{% endfor %}
+-->
+</body>
+</html>
+
+	
+	
+	
     
+<!--
 <body id="test">
     <div class="fixed">
         <div class="header">
@@ -96,6 +151,7 @@
       <a>05-300 Mińsk Mazowiecki<br>ul. M.Borelowskiego 3a </a>
     </div>
 </body>
+-->
 
 
-</html>
+<!--</html>-->
