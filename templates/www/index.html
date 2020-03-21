@@ -8,16 +8,22 @@
 <link rel="stylesheet" href="https://use.typekit.net/kbm3qwl.css">
 </head>
 
-<body>
-	
+<body onLoad="start_function()">
 	<div class="navigation center">
-		<ul>
-			{% for m1 in Menu1 %}
-				<li><a href="../m/{{ m1.id }}">{{ m1.nazwa }}</a></li>
-			{% endfor %}
-		</ul>
+		{% for m1 in Menu1 %}
+			<div class="menu" id="{{ m1.id }}">
+				<a href="../m/{{ m1.id }}">{{ m1.nazwa }}</a>
+				<div class="submenu">
+				{% for m2 in Menu2 %}
+					{% if m1.id == m2.rodzic.id %}
+						<a href="../m/{{ m2.id }}">{{ m2.nazwa }}</a>
+					{% endif %}
+				{% endfor %}
+				</div>
+			</div>
+		{% endfor %}
 	</div>
-	
+
 	<div class="container center">
 		{% for art in Skrocony %}
 			<div class="article">
@@ -26,6 +32,9 @@
 				</div>
 				<div class="text">
 					<p>{{ art.getWstep }}</p>
+				</div>
+				<div class="date center">
+					<p>{{ art.utworzony|date:"Y-m-d" }}</p>
 				</div>
 				<div class="buttons center">
 					<button onclick="location.href='../a/{{ art.id }}'">Więcej</button>
@@ -42,6 +51,9 @@
 					<p>{{ art.getWstep }}</p>
 					<p>{{ art.getTresc|safe }}</p>
 				</div>
+				<div class="date">
+					<p class="center">{{ art.utworzony|date:"Y-m-d" }}</p>
+				</div>
 			</div>
 		{% endfor %}
 	</div>
@@ -55,6 +67,12 @@
 {% endfor %}
 -->
 </body>
+	<script>
+		function start_function() {
+			document.getElementById("{{ pid }}").classList.add("underline");
+		}
+	</script>
+	
 </html>
 
 	

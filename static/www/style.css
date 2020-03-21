@@ -14,7 +14,7 @@ html {
 a, th, p, label, h1, h2 {
 	text-decoration: none;
 	color: white;
-	font-size: 24px;
+	font-size: 26px;
 	line-height: 1.2;
 	font-weight: 300;
 	font-style: normal;
@@ -37,31 +37,60 @@ h2 {
 
 /*<-- navigation styles –––––––––––––––––––––––––––––––––––––––––––––––––– -->*/
 
-ul {
-	list-style-type: none;
-	padding: 0;
-	margin: 0;
-}
-
-li {
-	display: inline;
-	padding: 20px;
-}
 
 .navigation {
-	padding: 25px 0;
+	padding-top: 20px;
+/*	background-color: green;*/
 }
+
+.menu a, .submenu a{
+	padding: 0 10px;
+}
+
+.submenu {
+	display: none;
+	position: absolute;
+	z-index: 1;
+/*	background-color: green;*/
+}
+
+.submenu a {
+	font-size: 20px;
+/*	background-color: red;*/
+}
+
+.menu:hover .submenu {
+	display: block;
+/*	background-color: red;*/
+	left: 0;
+	width: 100%;
+	text-align: center;
+	padding: 20px 0;
+}
+
+.menu a:hover {
+	text-decoration: underline;
+    text-underline-position: under;
+}
+
+.underline {
+/*	background-color: red;*/
+	text-decoration: underline;
+	text-underline-position: under;
+}
+
+
 
 /*<-- container styles –––––––––––––––––––––––––––––––––––––––––––––––––– -->*/
 
 .container {
 	flex-direction: column;
-	margin-top: 50px;
+	margin-top: 100px;
 }
 
 .article {
 	margin: 0 15%;
-	margin-bottom: 75px;
+	margin-bottom: 125px;
 }
 
 .article .text {
@@ -73,9 +102,18 @@ li {
 	font-style: normal;
 }
 
-.container h2 {
+.title h2 {
 	display: inline;
 	cursor: pointer;
+	margin: 0;
+}
+
+.date p {
+	margin: 20px 0 0 0;
+}
+
+.text p {
+	margin: 20px 0 0 0;
 }
 
 .article button {
@@ -83,12 +121,13 @@ li {
 	font-weight: 300;
 	font-style: normal;
 	color: white;
-	margin-top: 25px;
 	font-size: 24px;
 	border: 2px solid white;
 	background-color: #5299d0;
 	cursor: pointer;
-	width: 125px;
+	width: 150px;
+	margin: 40px 0 0 0;
+
 }
 
 .article button:hover {
