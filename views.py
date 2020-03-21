@@ -41,7 +41,7 @@ def kategoria(request):
 def pokazMenu(request,pid):
     return render(request,
                   'www/index.html',
-                  {**menuGorne(),**artykul('Pelny',pid),**artykul('Skrocony',pid),**artykul('Link',pid),**artykul('NaszeStarty',pid)})
+                  {**menuGorne(),**artykul('Pelny',pid),**artykul('Skrocony',pid),**artykul('Link',pid),**artykul('NaszeStarty',pid), 'pid': pid if not Menu.objects.get(id=pid).rodzic else Menu.objects.get(id=pid).rodzic.id})
     
 def pokazArtykul(request,pid):
     return render(request,
