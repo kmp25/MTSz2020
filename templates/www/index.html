@@ -25,36 +25,35 @@
 	</div>
 
 	<div class="container center">
-		{% for art in Skrocony %}
-			<div class="article">
-				<div class="title center" onclick="location.href='../a/{{ art.id }}'">
-					<h2>{{ art.getTytul }}</h2>
+		{% for art in ArtykulMenu %}
+			{% if not art.widok == 'Link' %}
+				<div class="article">
+					<div class="title center">
+						<h2 onclick="location.href='../a/{{ art.artykul.id }}'">{{ art.artykul.getTytul }}</h2>
+					</div>
+					<div class="text">
+						<p>{{ art.artykul.getWstep }}</p>
+						{% if art.widok == 'Pelny' %}
+							<p>{{ art.artykul.getTresc|safe }}</p>
+						{% else %}
+							<div class="buttons center">
+								<button onclick="location.href='../a/{{ art.artykul.id }}'">Więcej</button>
+							</div>
+						{% endif %}
+					</div>
+					<div class="date center">
+						<p>{{ art.artykul.utworzony|date:"Y-m-d" }}</p>
+					</div>
 				</div>
-				<div class="text">
-					<p>{{ art.getWstep }}</p>
-				</div>
-				<div class="date center">
-					<p>{{ art.utworzony|date:"Y-m-d" }}</p>
-				</div>
-				<div class="buttons center">
-					<button onclick="location.href='../a/{{ art.id }}'">Więcej</button>
-				</div>
-			</div>
+			{% endif %}
 		{% endfor %}
 		
-		{% for art in Pelny %}
-			<div class="article">
-				<div class="title center" onclick="location.href='../a/{{ art.id }}'">
-					<h2>{{ art.getTytul }}</h2>
+		{% for art in ArtykulMenu %}
+			{% if art.widok == 'Link' %}
+				<div class="link center">
+					<h2 onClick="location.href='../a/{{ art.artykul.id }}'">{{ art.artykul.getTytul }}</h2>
 				</div>
-				<div class="text">
-					<p>{{ art.getWstep }}</p>
-					<p>{{ art.getTresc|safe }}</p>
-				</div>
-				<div class="date">
-					<p class="center">{{ art.utworzony|date:"Y-m-d" }}</p>
-				</div>
-			</div>
+			{% endif %}
 		{% endfor %}
 	</div>
 	

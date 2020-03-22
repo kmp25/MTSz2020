@@ -39,44 +39,38 @@ h2 {
 
 
 .navigation {
-	padding-top: 20px;
-/*	background-color: green;*/
+	margin-top: 20px;
 }
 
-.menu a, .submenu a{
+.menu a {
 	padding: 0 10px;
+}
+
+.submenu a {
+	font-size: 20px;
 }
 
 .submenu {
 	display: none;
 	position: absolute;
 	z-index: 1;
-/*	background-color: green;*/
-}
-
-.submenu a {
-	font-size: 20px;
-/*	background-color: red;*/
+	cursor: default;
 }
 
 .menu:hover .submenu {
 	display: block;
-/*	background-color: red;*/
 	left: 0;
 	width: 100%;
 	text-align: center;
+	text-decoration: none;
 	padding: 20px 0;
 }
 
-.menu a:hover {
+.menu a:hover, .underline {
 	text-decoration: underline;
-    text-underline-position: under;
-}
-
-.underline {
-/*	background-color: red;*/
-	text-decoration: underline;
-	text-underline-position: under;
+    text-underline-position: under;	
+	-webkit-text-decoration: underline;
+    -webkit-text-underline-position: under;
 }
 
 
@@ -85,7 +79,7 @@ h2 {
 
 .container {
 	flex-direction: column;
-	margin-top: 100px;
+	margin: 100px 0 50px 0;
 }
 
 .article {
@@ -133,6 +127,11 @@ h2 {
 .article button:hover {
 	background-color: white; 
 	color: #5299d0;
+}
+
+.link h2 {
+	cursor: pointer;
+	margin: 20px 0;
 }
 
 /*<-- schedule styles –––––––––––––––––––––––––––––––––––––––––––––––––– -->*/
