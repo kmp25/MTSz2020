@@ -38,11 +38,18 @@ def kategoria(request):
     return pokazMenu(request,pid)
     
     
+#def pokazMenu1(request,pid):
+#    return render(request,
+#                  'www/index.html',
+#                  {**menuGorne(),**artykul('Pelny',pid),**artykul('Skrocony',pid),**artykul('Link',pid),**artykul('NaszeStarty',pid), 'pid': pid if not Menu.objects.get(id=pid).rodzic else Menu.objects.get(id=pid).rodzic.id})
+
+
 def pokazMenu(request,pid):
     return render(request,
                   'www/index.html',
-                  {**menuGorne(),**artykul('Pelny',pid),**artykul('Skrocony',pid),**artykul('Link',pid),**artykul('NaszeStarty',pid), 'pid': pid if not Menu.objects.get(id=pid).rodzic else Menu.objects.get(id=pid).rodzic.id})
-    
+                  {**menuGorne(), 'ArtykulMenu': ArtykulMenu.objects.filter(menu__id=pid).order_by('kolejnosc','-id'), 'pid': pid if not Menu.objects.get(id=pid).rodzic else Menu.objects.get(id=pid).rodzic.id})
+
+
 def pokazArtykul(request,pid):
     return render(request,
                   'www/index.html',
