@@ -72,10 +72,12 @@
 
 			{% for art in ArtykulMenu %}
 				{% if art.widok == 'Link' %}
-					<div class="link">
-						<a href="../a/{{ art.artykul.id }}">
-							<h3>{{ art.artykul.getTytul }}</h3>
-						</a>
+					<div class="article" id="link">
+						<div class="link">
+							<a href="../a/{{ art.artykul.id }}">
+								<h3>{{ art.artykul.getTytul }}</h3>
+							</a>
+						</div>
 					</div>
 				{% endif %}
 			{% endfor %}
