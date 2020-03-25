@@ -11,7 +11,7 @@ html {
 }
 
 
-a, th, p, label, h1, h2 {
+a, th, p, label, h1, h2, h3 {
 	text-decoration: none;
 	color: white;
 	font-size: 26px;
@@ -20,14 +20,17 @@ a, th, p, label, h1, h2 {
 	font-style: normal;
 }
 
-h1, h2 {
+h1, h2, h3 {
 	font-size: 48px;
 	font-weight: 700;
-/*	font-style: italic;*/
 }
 
 h2 {
 	font-size: 36px;
+}
+
+h3 {
+	font-size: 24px;
 }
 
 .center {
@@ -73,17 +76,14 @@ h2 {
     -webkit-text-underline-position: under;
 }
 
-
-
 /*<-- container styles –––––––––––––––––––––––––––––––––––––––––––––––––– -->*/
 
 .container {
 	flex-direction: column;
-	margin: 100px 0 50px 0;
+	margin: 100px 15% 50px 15%;
 }
 
 .article {
-	margin: 0 15%;
 	margin-bottom: 125px;
 }
 
@@ -104,6 +104,7 @@ h2 {
 
 .date p {
 	margin: 20px 0 0 0;
+	font-size: 24px;
 }
 
 .text p {
@@ -129,9 +130,9 @@ h2 {
 	color: #5299d0;
 }
 
-.link h2 {
+.link h3 {
 	cursor: pointer;
-	margin: 20px 0;
+	margin: 10px 0;
 }
 
 /*<-- schedule styles –––––––––––––––––––––––––––––––––––––––––––––––––– -->*/
