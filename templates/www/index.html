@@ -1,174 +1,89 @@
 <!doctype html>
 {% load static %}
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Mińskie Towarzystwo Szachowe</title>
-<link rel="stylesheet" href="{% static 'www/style.css' %}">
-<link rel="stylesheet" href="https://use.typekit.net/kbm3qwl.css">
-</head>
-
-<body onLoad="start_function()">
-	<div class="navigation center">
-		{% for m1 in Menu1 %}
-			<div class="menu" id="{{ m1.id }}">
-				<a href="../m/{{ m1.id }}">{{ m1.nazwa }}</a>
-				<div class="submenu">
-				{% for m2 in Menu2 %}
-					{% if m1.id == m2.rodzic.id %}
-						<a href="../m/{{ m2.id }}">{{ m2.nazwa }}</a>
-					{% endif %}
-				{% endfor %}
-				</div>
-			</div>
-		{% endfor %}
-	</div>
-
-	<div class="container center">
-		{% for art in ArtykulMenu %}
-			{% if not art.widok == 'Link' %}
-				<div class="article">
-					<div class="title center">
-						<h2 onclick="location.href='../a/{{ art.artykul.id }}'">{{ art.artykul.getTytul }}</h2>
-					</div>
-					<div class="text">
-						<p>{{ art.artykul.getWstep }}</p>
-						{% if art.widok == 'Pelny' %}
-							<p>{{ art.artykul.getTresc|safe }}</p>
-						{% else %}
-							<div class="buttons center">
-								<button onclick="location.href='../a/{{ art.artykul.id }}'">Więcej</button>
-							</div>
+	<head>
+	<meta charset="UTF-8">
+	<title>Mińskie Towarzystwo Szachowe</title>
+	<link rel="stylesheet" href="{% static 'www/style.css' %}">
+	<link rel="stylesheet" href="https://use.typekit.net/kbm3qwl.css">
+	</head>
+	<body onLoad="start_function()">
+		<div class="navigation center">
+			{% for m1 in Menu1 %}
+				<div class="menu" id="{{ m1.id }}">
+					<a href="../m/{{ m1.id }}">{{ m1.nazwa }}</a>
+					<div class="submenu">
+					{% for m2 in Menu2 %}
+						{% if m1.id == m2.rodzic.id %}
+							<a href="../m/{{ m2.id }}">{{ m2.nazwa }}</a>
 						{% endif %}
-					</div>
-					<div class="date center">
-						<p>{{ art.artykul.utworzony|date:"Y-m-d" }}</p>
+					{% endfor %}
 					</div>
 				</div>
+			{% endfor %}
+		</div>
+
+		<div class="container center">
+			{% if Pelny %}
+				{% for art in Pelny %}
+					<div class="article">
+						<div class="title center">
+							<a href="../a/{{ art.artykul.id }}">
+								<h2>{{ art.getTytul }}</h2>
+							</a>
+						</div>
+						<div class="text">
+							<p>{{ art.getWstep }}</p>
+							<p>{{ art.getTresc|safe }}</p>
+						</div>
+						<div class="date center">
+							<p>{{ art.utworzony|date:"Y-m-d" }}</p>
+						</div>
+					</div>
+				{% endfor %}
 			{% endif %}
-		{% endfor %}
-		
-		{% for art in ArtykulMenu %}
-			{% if art.widok == 'Link' %}
-				<div class="link center">
-					<h2 onClick="location.href='../a/{{ art.artykul.id }}'">{{ art.artykul.getTytul }}</h2>
-				</div>
-			{% endif %}
-		{% endfor %}
-	</div>
-	
-<!--
-{% for art in Skrocony %}
-        <article>
-            <div class="title" onclick="location.href='../a/{{ art.id }}'">{{ art.getTytul }}<span class="data">({{ art.utworzony|date:"Y-m-d" }})</span></div>
-                <p>{{ art.getWstep }}</p><p align="center"> <span type="button" onclick="location.href='../a/{{ art.id }}'">...Więcej...</span></p>
-        </article>
-{% endfor %}
--->
-</body>
+			
+			{% for art in ArtykulMenu %}
+				{% if not art.widok == 'Link' %}
+					<div class="article">
+						<div class="title center">
+							<a href="../a/{{ art.artykul.id }}">
+								<h2>{{ art.artykul.getTytul }}</h2>
+							</a>
+						</div>
+						<div class="text">
+							<p>{{ art.artykul.getWstep }}</p>
+							{% if art.widok == 'Pelny' %}
+								<p>{{ art.artykul.getTresc|safe }}</p>
+							{% else %}
+								<div class="buttons center">
+									<a href="../a/{{ art.artykul.id }}">
+										<button>Więcej</button>
+									</a>
+								</div>
+							{% endif %}
+						</div>
+						<div class="date center">
+							<p>{{ art.artykul.utworzony|date:"Y-m-d" }}</p>
+						</div>
+					</div>
+				{% endif %}
+			{% endfor %}
+
+			{% for art in ArtykulMenu %}
+				{% if art.widok == 'Link' %}
+					<div class="link">
+						<a href="../a/{{ art.artykul.id }}">
+							<h3>{{ art.artykul.getTytul }}</h3>
+						</a>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</body>
 	<script>
 		function start_function() {
 			document.getElementById("{{ pid }}").classList.add("underline");
 		}
 	</script>
-	
 </html>
-
-	
-	
-	
-    
-<!--
-<body id="test">
-    <div class="fixed">
-        <div class="header">
-            <div class="menu">
-                <div id="myNav" class="overlay">
-                  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
-                  <div class="close">
-                    &times;
-                  </div>
-                  </a>
-                  <div class="overlay-content">
-                  {% for m1 in Menu1 %}
-                    <a href='../m/{{ m1.id }}'>{{ m1.nazwa }}</a>
-                  {% endfor %}
-                  </div>
-                </div>
-                
-                <div class="open" onclick="openNav()">
-                    <div class="bar1"></div>
-                    <div class="bar2"></div>
-                </div>
-
-                <script>
-                    function openNav() {
-                        document.getElementById("myNav").style.height = "100%";
-                        document.getElementById("test").style.overflow = "hidden";
-                    }
-
-                    function closeNav() {
-                        document.getElementById("myNav").style.height = "0%";
-                        document.getElementById("test").style.overflow = "auto";
-                    }
-                </script>
-            </div>
-            
-            <div class="container"> 
-                <div class="nav">
-                {% for m1 in Menu1 %}
-                    <div class="button" ontouchstart="" onclick="location.href='../m/{{ m1.id }}'">{{ m1.nazwa }}
-                        <div class="dropdown-content">
-                        	{% for m2 in Menu2 %}
-                        		{% if m1.id == m2.rodzic.id %}
-                            		<a class="content" href='../m/{{ m2.id }}'>{{ m2.nazwa }}</a>
-                            	{% endif %}
-                            {% endfor %}
-                        </div>
-                    </div>
-                {% endfor %}
-
-                </div>
-               
-            </div>
-        </div>
-    </div>
-    
-
-    <div class="bg"></div>
-    
-
-    <div class="main">
-
-
-{% for art in Pelny %}
-        <article>
-            <div class="title" onclick="location.href='../a/{{ art.id }}'">{{ art.getTytul }} <span class="data">({{ art.utworzony|date:"Y-m-d" }})</span></div>
-                <p>{{ art.getWstep }}</p><p> {{ art.getTresc |safe }}</p>
-        </article>
-{% endfor %}
-
-{% for art in Skrocony %}
-        <article>
-            <div class="title" onclick="location.href='../a/{{ art.id }}'">{{ art.getTytul }}<span class="data">({{ art.utworzony|date:"Y-m-d" }})</span></div>
-                <p>{{ art.getWstep }}</p><p align="center"> <span type="button" onclick="location.href='../a/{{ art.id }}'">...Więcej...</span></p>
-        </article>
-{% endfor %}
-
-{% for art in Link %}
-        <a class="TylkoLink" href="../a/{{ art.id }}">{{ art.getTytul }}<span class="data">({{ art.utworzony|date:"Y-m-d" }})</span></a>
-{% endfor %}
-      
-    </div>
-
-    <div class="footer section">
-      <div class="title">
-          <p>Mińskie Towarzystwo Szachowe</p>
-      </div>
-      <a>05-300 Mińsk Mazowiecki<br>ul. M.Borelowskiego 3a </a>
-    </div>
-</body>
--->
-
-
-<!--</html>-->
